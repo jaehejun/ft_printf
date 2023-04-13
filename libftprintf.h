@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 20:48:51 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/04/13 20:07:11 by jaehejun         ###   ########.fr       */
+/*   Created: 2023/04/13 20:04:04 by jaehejun          #+#    #+#             */
+/*   Updated: 2023/04/13 20:12:01 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
 
-int	ft_printf(const char *format, ...)
-{
-	if (format == %c)
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdarg.h>
 
-	else if (format == %s)
+int	ft_printf(const char *format, ...);
+void	ft_putchar(char c);
 
-	else if (format == %p)
 
-	else if (format == %d)
-
-	else if (format == %i)
-
-	else if (format == %u)
-
-	else if (format == %x)
-
-	else if (format == %X)
-
-	else if (format == %%)
-		write()
-}
+#endif

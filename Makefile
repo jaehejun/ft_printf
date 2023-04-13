@@ -6,7 +6,7 @@
 #    By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 20:43:43 by jaehejun          #+#    #+#              #
-#    Updated: 2023/04/11 21:28:22 by jaehejun         ###   ########.fr        #
+#    Updated: 2023/04/13 13:27:53 by jaehejun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,16 +16,16 @@ CC		= cc
 
 CFLAGS	= -Wall -Wextra -Werror
 
-SRCS	=
+SRCS	= ft_printf.c
 
-OBJS	=
+OBJS	= $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar -r $(NAME) $(OBJS)
+	ar -rc $(NAME) $(OBJS)
 
-.o: .c	$(CC) $(CFLAGS) -o $@ -c $^
+%.o: %.c	$(CC) $(CFLAGS) -c $^ -o $@
 
 clean:
 	rm -f $(OBJS)
