@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 20:48:51 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/04/19 22:24:25 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/04/22 22:04:47 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,23 @@ void	check_format(char *format, ...)
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
+	int		len;
+	
+	va_start(ap, format);
+	while (*format != '\0')
+	{}
+	if (*format != '%')
+	{
+		write (1, format, 1);
+		format++;
+		if (*(format + 1) == "spdiuxX")
+			conv_format(*(format + 1));
+		else if (*(format + 1) == '%')
+			write(1, "%", 1);
+		else
+			return (-1);
+		
+	}
 	
 	check_format(format);
 	va_start(ap, format);

@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 20:32:50 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/04/19 22:29:13 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/04/22 22:25:23 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 
 int	main(void)
 {
-	int	a = 3;
-	int	b = 5;
-	char	c = 'a';
-	int	d = 9;
+	char *str = "hello\n";
+	//int	a = 3;
+	//int	b = 5;
+	//char	c = 'a';
+	//int	d = 9;
 
-	printf("kakakakak %d, asl;kj %d, %d ;alskfj %c\n" "how about %d this?", a, b, d, c, d);
+	//printf("kakakakak %d, asl;kj %d, %d ;alskfj %c\n" "how about %d this?", a, b, d, c, d);
+	printf(str);
 }
