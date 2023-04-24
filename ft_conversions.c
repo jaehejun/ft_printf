@@ -6,24 +6,33 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 16:39:54 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/04/21 16:03:31 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/04/24 22:01:17 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <stdio.h>
+#include <unistd.h>
+#include <stdarg.h>
 
-void	conv_chars(va_list ap)
+int	conv_chars(char *format, va_list ap)
 {
-	size_t	len;
+	int	len;
 
-	if (va_arg(ap, type) == char)
-		write(1, format, 1);
-	else if (va_arg(ap, type) == char *)
+	len = 0;
+	if (*format == 'c')
 	{
-		len = ft_strlen(format)
+		write(1, ap, 1);
+		va_arg(ap, int);
+	}
+	else if (*format == 's')
+	{
+		len = ft_strlen()
 		write(1, format, len);
 	}
 }
+
+cspdiuxX%
 
 void	conv_pointer(va_list ap)
 {

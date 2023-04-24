@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 20:04:04 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/04/13 20:12:01 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/04/24 20:37:01 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,3 +22,11 @@ void	ft_putchar(char c);
 
 
 #endif
+
+typedef s_struct()
+{
+	char a;
+	char b;
+	int  c;
+	
+}

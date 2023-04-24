@@ -6,22 +6,22 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 20:48:51 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/04/22 22:29:10 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/04/24 21:53:02 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <stdio.h>
+#include <unistd.h>
+#include <stdarg.h>
 
-void	check_format(char *format, ...)
+int	check_format(char *format, va_list ap)
 {
-	while (*format != '%')
-	{
-		format++;
-	}
-	if (*format == '%')
-		format++;
+	int	len;
+	
+	len = 0;
 	if (*format == 'c' || *format == 's')
-		conv_chars(ap);	
+		conv_chars(format, ap);
 	else if (*format == 'p')
 		conv_pointer(ap);
 	else if (*format == 'd' || *format == 'i' || *format == 'u')
@@ -30,11 +30,8 @@ void	check_format(char *format, ...)
 		conv_hexs(ap);
 	else if (*format == '%')
 		write(1, "%", 1);
-	else
-	{
-		while (*format != '\0')
-			write(1, format, 1);
-	}
+	format++;
+	return (len);
 }
 
 int	ft_printf(const char *format, ...)
@@ -42,50 +39,38 @@ int	ft_printf(const char *format, ...)
 	va_list	ap;
 	int		len;
 	
-	va_start(ap, format);
+	len = 0;
+	if (*format != '\0')
+		va_start(ap, format);
 	while (*format != '\0')
 	{
-		if (*format != '%')
-			write (1, format, 1);
-		if (*(format + 1) == "spdiuxX")
-			conv_format(*(format + 1));
-		else if (*(format + 1) == '%')
-			write(1, "%", 1);
-		else
-			return (-1);
+		if (*format == '%')
+		{
+			format++;
+			len += (check_format(format, ap));	
 		}
+		write (1, format, 1);
+		len++;
 		format++;
 	}
-	if (*format != '%')
-	{
-		
-		
-	}
-	
-	check_format(format);
-	va_start(ap, format);
 	va_end(ap);
+	return (len);
 }
-
-#include <stdarg.h>
 
 int	main(void)
 {
-	int	a = 3;
-	int	b = 5;
-	char	c = 'a';
-	int	d = 9;
-
-	printf("kakakakak %d, asl;kj %d, %d ;alskfj %c", a, b, d, c "and this? %d", d);
+	int	a = 8;
+	printf("hello! it's %d 'o clock", a);
+	printf(printf("hello! it's %d 'o clock", a));
 }
 
-int	count;
-error check() // %ㄲㅏ지 밀고 %찾으면 그 뒤에 유효한 format이 있는지 검사
-va_start() // 고정된 char* 밀고 첫번째 가변인자의 시작주소를 가리킴
-%찾고 뒤의 포멧에 따라 
-해당 함수로 가서(ft_conversion()) malloc 후 출력, 반환할 count++;
-va_end()
-return (cnt);;
+//int	count;
+//error check() // %ㄲㅏ지 밀고 %찾으면 그 뒤에 유효한 format이 있는지 검사
+//va_start() // 고정된 char* 밀고 첫번째 가변인자의 시작주소를 가리킴
+//%찾고 뒤의 포멧에 따라 
+//해당 함수로 가서(ft_conversion()) malloc 후 출력, 반환할 count++;
+//va_end()
+//return (cnt);;
 
-인인자자(argument)인수(parameter)차이 정리하기
-%p 포멧 출력하는법 공부하기
+//인인자자(argument)인수(parameter)차이 정리하기
+//%p 포멧 출력하는법 공부하기
