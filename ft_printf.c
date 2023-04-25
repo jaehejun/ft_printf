@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 20:48:51 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/04/24 21:53:02 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:49:06 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,18 @@ int	check_format(char *format, va_list ap)
 	
 	len = 0;
 	if (*format == 'c' || *format == 's')
-		conv_chars(format, ap);
+		len += conv_chars(format, ap);
 	else if (*format == 'p')
-		conv_pointer(ap);
+		len += conv_pointer(ap);
 	else if (*format == 'd' || *format == 'i' || *format == 'u')
-		conv_demicals(ap);
+		len += conv_demicals(ap);
 	else if (*format == 'x' || *format == 'X')
-		conv_hexs(ap);
+		len += conv_hexs(ap);
 	else if (*format == '%')
+	{
 		write(1, "%", 1);
+		len++;
+	}
 	format++;
 	return (len);
 }
@@ -47,7 +50,7 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			len += (check_format(format, ap));	
+			len += (check_format(format, ap));
 		}
 		write (1, format, 1);
 		len++;

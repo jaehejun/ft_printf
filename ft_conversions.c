@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 16:39:54 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/04/24 22:01:17 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/04/25 22:33:36 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,27 @@
 
 int	conv_chars(char *format, va_list ap)
 {
-	int	len;
+	int		len;
+	char	c;
+	char *	str;
 
 	len = 0;
 	if (*format == 'c')
 	{
-		write(1, ap, 1);
-		va_arg(ap, int);
+		c = (char)va_arg(ap, int);
+		len = ft_putchar(c);
 	}
 	else if (*format == 's')
 	{
-		len = ft_strlen()
-		write(1, format, len);
+		str = va_arg(ap, char *);
+		len = ft_putstr(str);
 	}
+	return (len);
 }
 
 cspdiuxX%
 
-void	conv_pointer(va_list ap)
+int	conv_pointer(char *format, va_list ap)
 {
 	char **ptr;
 
@@ -42,9 +45,12 @@ void	conv_pointer(va_list ap)
 	
 }
 
-void	conv_demicals(va_list ap)
+int	conv_demicals(char *format, va_list ap)
 {
-	
+	int	number;
+
+	number = 0;
+	if ()
 }
 
 void	conv_hexs(va_list ap)

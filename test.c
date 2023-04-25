@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 20:32:50 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/04/24 21:24:09 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/04/25 22:45:22 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,16 @@
 
 int	main(void)
 {
-	//int	a = 8;
-	//int	result = printf("hello! it's %d 'o clock\n", a);
+	int	a = 555;
+	char *s = "five";
+	char c = '!';
+	printf("a : %p\n", &a);
+	printf("s : %p\n", s);
+	printf("c : %p\n", &c);
+	int	result = printf("hello%c it's %d%s 'o clock%c\n", c, a, s, c);
 	
-	//printf("return value : %d\n", result);
-	printf("%%%%%%\n");
+	//printf("return value : %s\n", result);
+	//printf("%%%%%%\n");
 }
 
 //int	main(void)
@@ -45,7 +50,7 @@ int	main(void)
 //	int	ff = sizeof(f);
 //	int	gg = sizeof(g);
 
-//	printf("a : %p size : %d\n", &a, sizeof(a));
+//	printf("a : %p size : %d\n", &a, aa);
 //	printf("b : %p size : %d\n", &b, bb);
 //	printf("c : %p size : %d\n", &c, cc);
 //	printf("d : %p size : %d\n", &d, dd);
