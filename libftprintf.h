@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 20:04:04 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/04/25 17:31:19 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/04/26 22:43:19 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,14 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
-# include "libft.h"
 
 int	ft_printf(const char *format, ...);
-
+int	check_format(const char *format, va_list ap);
+int	conv_char(const char *format, va_list ap);
+int	conv_pointer(char *format, va_list ap);
+int	conv_demical(char *format, va_list ap);
+void	conv_hex(va_list ap);
+int	ft_putchar(char c);
+int	ft_putstr(char *str);
 
 #endif
-
-typedef s_struct()
-{
-	char a;
-	char b;
-	int  c;
-	
-}

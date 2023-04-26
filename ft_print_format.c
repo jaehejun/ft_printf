@@ -19,10 +19,28 @@ int	ft_putchar(char c)
 	return (1);
 }
 
-int	ft_pustr(char *str)
+int	ft_putstr(char *str)
 {
+	int	len;
+
+	len = 0;
 	while (*str != '\0')
 	{
-
+		write(1, str, 1);
+		str++;
+		len++;
 	}
+	return (len);
+}
+
+int	ft_putptr(void *ptr)
+{
+	int				len;
+	unsigned long	address;
+
+	write(1, "0x", 2);
+	len = 2;
+	address = ptr;
+
+
 }

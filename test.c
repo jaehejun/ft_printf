@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 20:32:50 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/04/25 22:45:22 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/04/26 21:04:56 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,24 @@
 
 int	main(void)
 {
-	int	a = 555;
-	char *s = "five";
-	char c = '!';
+	int		a = 555;
+	char	*s = "five";	// *s의 주소 : 0x10fd35f56
+	char	c = '!';
+	int		i = 0;
+	int		p = 97;
+	void	*ptr = &p;
+
 	printf("a : %p\n", &a);
-	printf("s : %p\n", s);
+	printf("s : %p\n", &s);	// 주소값 s가 담긴 곳의 주소 : 07ffee0faa7c0
 	printf("c : %p\n", &c);
+	printf("ptr : %p\n", ptr);
 	int	result = printf("hello%c it's %d%s 'o clock%c\n", c, a, s, c);
+	
+	while (*s != '\0')
+	{
+		printf("str : %p : %c\n", s, *(s));
+		s++;
+	}
 	
 	//printf("return value : %s\n", result);
 	//printf("%%%%%%\n");
