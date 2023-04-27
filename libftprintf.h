@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 20:04:04 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/04/26 22:43:19 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/04/27 16:51:59 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int	conv_demical(char *format, va_list ap);
 void	conv_hex(va_list ap);
 int	ft_putchar(char c);
 int	ft_putstr(char *str);
+int	ft_putptr(void *ptr);
 
 #endif

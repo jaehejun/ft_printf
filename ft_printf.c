@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 20:48:51 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/04/26 22:43:10 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/04/27 22:24:51 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,28 @@ int	check_format(const char *format, va_list ap)
 	int	len;
 	
 	len = 0;
-	if (*format == 'c' || *format == 's')
-		len += conv_char(format, ap);
+	if (*format == 'c')
+		len += ft_putchar((char)va_arg(ap, int));
+	else if (*format == 's')
+		len += ft_putstr(va_arg(ap, char *));
 	else if (*format == 'p')
-		len += conv_pointer(*format, ap);
-	else if (*format == 'd' || *format == 'i' || *format == 'u')
-		len += conv_demical(ap);
+		len += ft_putptr(va_arg(ap, void *));
+	else if (*format == 'd' || *format == 'i')
+		len += ft_putnbr(va_arg(ap, int));
+	else if (*format == 'u')
+		len += ft_putnbr(va_arg(ap, unsigned int));
 	else if (*format == 'x' || *format == 'X')
-		len += conv_hex(ap);
+		len += ft_puthex(va_arg(ap, unsigned int));
 	else if (*format == '%')
 	{
 		write(1, "%", 1);
 		len++;
 	}
+	else
+		return (0);
 	format++;
 	return (len);
-}
+}	
 
 int	ft_printf(const char *format, ...)
 {

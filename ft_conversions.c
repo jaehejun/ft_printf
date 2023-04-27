@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 16:39:54 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/04/26 22:45:39 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/04/27 22:24:23 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	conv_char(const char *format, va_list ap)
 {
 	int		len;
 	char	c;
-	char *	str;
+	char	*str;
 
 	len = 0;
 	if (*format == 'c')
@@ -38,7 +38,7 @@ int	conv_char(const char *format, va_list ap)
 int	conv_pointer(char *format, va_list ap)
 {
 	int		len;
-	void *	ptr;
+	void	*ptr;
 	
 	ptr = va_arg(ap, void *);
 	len = ft_putptr(ptr);
@@ -47,20 +47,27 @@ int	conv_pointer(char *format, va_list ap)
 
 int	conv_demical(char *format, va_list ap)
 {
-	int			len;
-	long long	number;
+	int		len;
+	long	number;
 	
-	if (*format == 'd')
+	if (*format == 'd' || *format == 'i')
 	{
 		number = va_arg(ap, int);
-		ft_putnbr(number)
+		len += ft_putnbr(number);
 	}
-
-	number = 0;
-	if ()
+	else if (*format == 'u')
+	{
+		number = va_arg(ap, unsigned int);
+		len += ft_putnbr(number);
+	}
 }
 
-void	conv_hex(va_list ap)
+void	conv_hex(char *format, va_list ap)
 {
+	int				len;
+	unsigned int	number;
+	
+	number = va_arg(ap, unsigned int);
+	len += ft_puthex(number);
 
 }
