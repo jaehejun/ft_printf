@@ -6,22 +6,19 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 20:48:51 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/04/27 22:24:51 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/04/28 19:41:20 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
-#include <unistd.h>
-#include <stdarg.h>
 
 int	check_format(const char *format, va_list ap)
 {
 	int	len;
-	
+
 	len = 0;
 	if (*format == 'c')
-		len += ft_putchar((char)va_arg(ap, int));
+		len += ft_putchar((unsigned char)va_arg(ap, int));
 	else if (*format == 's')
 		len += ft_putstr(va_arg(ap, char *));
 	else if (*format == 'p')
@@ -39,27 +36,23 @@ int	check_format(const char *format, va_list ap)
 	}
 	else
 		return (0);
-	format++;
 	return (len);
-}	
+}
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	int		len;
-	
+
 	len = 0;
 	if (*format != '\0')
 		va_start(ap, format);
 	while (*format != '\0')
 	{
 		if (*format == '%')
-		{
-			format++;
-			len += (check_format(format, ap));
-		}
-		write (1, format, 1);
-		len++;
+			len += (check_format(++format, ap));
+		else
+			len += ft_putchar(*format);
 		format++;
 	}
 	va_end(ap);
@@ -72,6 +65,6 @@ int	main(void)
 	char	c = '!';
 	char *str = "hello";
 	int	result;
-	printf("return : %d\n", result = ft_printf("umm %s%%c it's 5 'o clock\n", str, c));
-	printf("return : %d\n", result = printf("umm %s%%%c it's 5 'o clock\n", str, c));
+	printf("return : %d\n", result = ft_printf("umm %s%c it's 5 'o clock\n", str, c));
+	printf("return : %d\n", result = printf("umm %s%c it's 5 'o clock\n", str, c));
 }
