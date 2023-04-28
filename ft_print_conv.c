@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 20:10:35 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/04/28 21:04:06 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/04/28 21:14:50 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	ft_putnbr(int nbr)
 	return (len);
 }
 
-int	ft_puthex(unsigned int nbr)
+int	ft_puthex(unsigned int nbr, const char *format)
 {
 	int					len;
 	unsigned long long	number;
@@ -85,9 +85,9 @@ int	ft_puthex(unsigned int nbr)
 	
 	write(1, "0x", 2);
 	len += 2;
-	while (number >= 16)
-	{
-		number = number /
-	}
-	
+	if (number >= 16)
+		ft_puthex(number / 16);
+	if (*format == 'x')
+		ft_putchar(base_low[number % 16]);
+	ft_putchar(base_upp[number % 16]);
 }

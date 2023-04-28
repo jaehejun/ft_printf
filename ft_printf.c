@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 20:48:51 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/04/28 19:41:20 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/04/28 21:13:56 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_format(const char *format, va_list ap)
 	else if (*format == 'u')
 		len += ft_putnbr(va_arg(ap, unsigned int));
 	else if (*format == 'x' || *format == 'X')
-		len += ft_puthex(va_arg(ap, unsigned int));
+		len += ft_puthex(va_arg(ap, unsigned int), const char *format);
 	else if (*format == '%')
 	{
 		write(1, "%", 1);
