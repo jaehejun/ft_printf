@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 20:32:50 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/04/27 17:28:42 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/05/02 19:40:05 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,14 @@
 
 int	main(void)
 {
+	unsigned int		a = 131415;
+	unsigned long long	b = 131415;
+	void				*ptr = &b;
+	
+	printf("a : %x\n, b : %llx\n ptr : %p\n", a, b, ptr);
+}
+//int	main(void)
+//{
 	//int		a = 555;
 	//char	*s = "five";	// *s의 주소 : 0x10fd35f56
 	//char	c = '!';
@@ -38,11 +46,11 @@ int	main(void)
 	
 	//printf("return value : %s\n", result);
 	//printf("%%%%%%\n");
-	int b = 'b';
-	void *a = (void *)18446744073709551615;
-	printf("number : %p\n", a);
-	printf("arg : %d\n", b);
-}
+	//int b = 'b';
+	//void *a = (void *)18446744073709551615;
+	//printf("number : %p\n", a);
+	//printf("arg : %d\n", b);
+//}
 
 //int	main(void)
 //{

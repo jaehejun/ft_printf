@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 20:04:04 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/04/28 17:36:24 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/05/01 14:49:23 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int	ft_putchar(unsigned char c);
 int	ft_putstr(char *str);
 int	ft_putptr(void *ptr);
 int	ft_putnbr(int nbr);
-int	ft_puthex(unsigned int number);
+int	ft_puthex(unsigned int number, const char *format);
 
 #endif

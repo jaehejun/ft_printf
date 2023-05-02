@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 20:10:35 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/04/28 21:14:50 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/05/02 21:32:04 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_putstr(char *str)
 	{
 		if (write(1, "null", 4) == -1)
 			return (-1);
-		len += 4;
+		len = 4;
 	}
 	while (*str != '\0')
 	{
@@ -42,15 +42,16 @@ int	ft_putstr(char *str)
 
 int	ft_putptr(void *ptr)
 {
-	int				len;
-	unsigned long	address;
-	char			*number;
+	int					len;
+	unsigned long long	address;
+	char				*base_low; 
 
-	write(1, "0x", 2);
-	len += 2;
+	len = write(1, "0x", 2);
+	if (len == -1)
+		return(-1);
+	base_low = "0123456789abcdef";
 	address = (unsigned long long)ptr;
-	number = ft_itoa(address);
-	len += ft_putstr(number);
+	len = ft_putnbr_base(address, base_low);
 	return (len);
 }
 
@@ -78,16 +79,16 @@ int	ft_puthex(unsigned int nbr, const char *format)
 	char				*base_low;
 	char				*base_upp;
 
-	len = 0;
 	number = (unsigned long long)nbr;
 	base_low = "0123456789abcdef";
 	base_upp = "0123456789ABCDEF";
-	
-	write(1, "0x", 2);
-	len += 2;
-	if (number >= 16)
-		ft_puthex(number / 16);
+
+	if (write(1, "0x", 2) == -1)
+		return (-1);
+	len = 2;
 	if (*format == 'x')
-		ft_putchar(base_low[number % 16]);
-	ft_putchar(base_upp[number % 16]);
+		len += ft_putnbr_base(number, base_low);
+	if (*format == 'X')
+		len += ft_putnbr_base(number, base_upp);
+	return (len);
 }
