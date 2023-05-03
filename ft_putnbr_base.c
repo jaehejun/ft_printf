@@ -12,35 +12,67 @@
 
 #include "libftprintf.h"
 #include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdarg.h>
 
-int	nbr_len(unsigned long long number)
+int	putnbr_len(int number)
 {
 	int	len;
 
 	len = 0;
-	while (number / 16 > 0)
+	if (number < 0)
+	{
+		number *= -1;
+		len++;
+	}
+	while (number / 10 > 0)
+	{
+		number = number / 10;
+		len++;
+	}
+	return (len + 1);
+}
+
+int	ft_putnbr(int nbr)
+{
+	int			len;
+	long long	number;
+
+	number = (long long)nbr;
+	if (number < 0)
+	{
+		number *= -1;
+		ft_putchar('-');
+	}
+	if (number >= 10)
+		ft_putnbr(number / 10);
+	ft_putchar(number % 10 + '0');
+	len = putnbr_len(nbr);
+	return (len + 1);
+}
+
+int	putnbr_base_len(unsigned long long number)
+{
+	int	len;
+
+	len = 0;
+	while (number / 16 >= 0)
 	{
 		number = number / 16;
 		len++;
 	}
-	return (len);
+	return (len + 1);
 }
+
 int	ft_putnbr_base(unsigned long long number, char *base)
 {
 	int	len;
 	
-	len = nbr_len(number);
 	if (number >= 16)
 		ft_putnbr_base(number / 16, base);
 	if (write(1, &base[number % 16], 1) == -1)
 		return (-1);
+	len = putnbr_base_len(number);
 	return (len);
-}
-
-int	main(void)
-{
-	unsigned long number = 2147483648999999;
-	char *base = "0123456789abcdef";
-	printf("putnbr : %d\n", ft_putnbr_base(number, base));
-	printf("number : %d\n", number);
 }

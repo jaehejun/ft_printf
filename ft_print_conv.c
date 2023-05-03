@@ -6,11 +6,15 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 20:10:35 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/05/02 21:32:04 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/05/03 22:51:22 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdarg.h>
+int	ft_putnbr_base(unsigned long long number, char *base);
 
 int	ft_putchar(unsigned char c)
 {
@@ -46,33 +50,17 @@ int	ft_putptr(void *ptr)
 	unsigned long long	address;
 	char				*base_low; 
 
-	len = write(1, "0x", 2);
-	if (len == -1)
+	if (write(1, "0x", 2) == -1)
 		return(-1);
 	base_low = "0123456789abcdef";
 	address = (unsigned long long)ptr;
 	len = ft_putnbr_base(address, base_low);
-	return (len);
+	if (len == -1)
+		return (-1);
+	return (len + 2);
 }
 
-int	ft_putnbr(int nbr)
-{
-	int			len;
-	long long	number;
-
-	number = (long long)nbr;
-	if (number < 0)
-	{
-		number *= -1;
-		len += ft_putchar('-');
-	}
-	if (number >= 10)
-		ft_putnbr(number / 10);
-	len += ft_putchar(number % 10 + '0');
-	return (len);
-}
-
-int	ft_puthex(unsigned int nbr, const char *format)
+int	ft_puthex(unsigned int nbr, char format)
 {
 	int					len;
 	unsigned long long	number;
@@ -83,12 +71,9 @@ int	ft_puthex(unsigned int nbr, const char *format)
 	base_low = "0123456789abcdef";
 	base_upp = "0123456789ABCDEF";
 
-	if (write(1, "0x", 2) == -1)
-		return (-1);
-	len = 2;
-	if (*format == 'x')
-		len += ft_putnbr_base(number, base_low);
-	if (*format == 'X')
-		len += ft_putnbr_base(number, base_upp);
+	if (format == 'x')
+		len = ft_putnbr_base(number, base_low);
+	if (format == 'X')
+		len = ft_putnbr_base(number, base_upp);
 	return (len);
 }
