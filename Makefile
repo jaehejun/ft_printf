@@ -6,7 +6,7 @@
 #    By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 20:43:43 by jaehejun          #+#    #+#              #
-#    Updated: 2023/04/28 19:37:44 by jaehejun         ###   ########.fr        #
+#    Updated: 2023/05/04 20:43:45 by jaehejun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ NAME	= libftprintf.a
 CC		= cc
 
 CFLAGS	= -Wall -Wextra -Werror
-
-SRCS	= ft_printf.c ft_print_conv.c
+ 
+SRCS	= ft_printf.c ft_print_conv.c ft_putnbr_base.c
 
 OBJS	= $(SRCS:.c=.o)
 
