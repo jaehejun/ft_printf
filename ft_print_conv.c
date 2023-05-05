@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 20:10:35 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/05/04 22:58:13 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/05/05 20:01:07 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,14 @@ int	ft_putptr(void *ptr)
 	return (len + 2);
 }
 
-int	ft_puthex(unsigned int nbr, char format)
+int	ft_puthex(int ap_num, char format)
 {
-	int					len;
-	unsigned long long	number;
-	char				*base_low;
-	char				*base_upp;
+	int			len;
+	long long	number;
+	char		*base_low;
+	char		*base_upp;
 
-	number = (unsigned long long)nbr;
+	number = (long long)ap_num;
 	base_low = "0123456789abcdef";
 	base_upp = "0123456789ABCDEF";
 	if (format == 'x')

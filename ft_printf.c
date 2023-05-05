@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 20:48:51 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/05/04 23:00:59 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/05/05 20:18:04 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_format(char format, va_list ap)
 	else if (format == 'u')
 		len = ft_put_unsigned_nbr(va_arg(ap, unsigned int));
 	else if (format == 'x' || format == 'X')
-		len = ft_puthex(va_arg(ap, unsigned int), format);
+		len = ft_puthex(va_arg(ap, int), format);
 	else if (format == '%')
 		len = ft_putchar('%');
 	else
@@ -40,6 +40,7 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	int		len;
+	int		check_error;
 
 	len = 0;
 	if (*format != '\0')
@@ -47,10 +48,18 @@ int	ft_printf(const char *format, ...)
 	while (*format != '\0')
 	{
 		if (*format == '%')
-			len += (check_format(*(++format), ap));
-		else
-			len += ft_putchar(*format);
-		format++;
+		{
+			check_error = check_format(*(++format), ap);
+			if (check_error == -1)
+				return (-1);
+			len += check_error;
+			format++;
+			continue ;
+		}
+		check_error = write(1, format++, 1);
+		if (check_error == -1)
+			return (-1);
+		len += check_error;
 	}
 	va_end(ap);
 	return (len);
@@ -90,3 +99,14 @@ int	ft_printf(const char *format, ...)
 	//printf("P_len : %d\n", printf("%%% \n: %%%\n"));
 	//ft_printf("f_len : %d\n", ft_printf("%%% \n: %%%\n"));
 //}
+
+int	main(void)
+{
+//	printf("P_len : %d\n", printf("d : %d\n", a));
+//	ft_printf("f_len : %d\n", ft_printf("d : %d\n", a));
+//	if (printf("d : %d\n", a) == ft_printf("d : %d\n", a))
+//		printf("same result\n");
+//	else
+//		printf("diff\n");
+	printf("%x", -1);
+}
