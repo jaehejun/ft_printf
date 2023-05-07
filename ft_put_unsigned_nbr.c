@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ori_pf.c                                           :+:      :+:    :+:   */
+/*   ft_put_unsigned_nbr.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 22:54:04 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/05/05 15:45:41 by jaehejun         ###   ########.fr       */
+/*   Created: 2023/05/07 21:50:37 by jaehejun          #+#    #+#             */
+/*   Updated: 2023/05/07 21:51:00 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include "ft_printf.h"
+
+int	unsigned_nbr_len(unsigned int ap_num)
 {
-	va_list	ap;
-	int		len;
+	int	len;
 
 	len = 0;
-	if (*format != '\0')
-		va_start(ap, format);
-	while (*format != '\0')
+	while (ap_num / 10 > 0)
 	{
-		if (*format == '%')
-			len += (check_format(*(++format), ap));
-		else
-			len += ft_putchar(*format);
-		format++;
+		ap_num = ap_num / 10;
+		len++;
 	}
-	va_end(ap);
+	return (len + 1);
+}
+
+int	ft_put_unsigned_nbr(unsigned int ap_num)
+{
+	int	len;
+
+	if (ap_num >= 10)
+		ft_put_unsigned_nbr(ap_num / 10);
+	if (ft_putchar(ap_num % 10 + '0') == -1)
+		return (-1);
+	len = unsigned_nbr_len(ap_num);
 	return (len);
 }

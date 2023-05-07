@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 20:04:04 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/05/05 20:01:48 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/05/07 22:45:10 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,23 @@
 
 int	ft_printf(const char *format, ...);
 int	check_format(char format, va_list ap);
+
 int	ft_putchar(char c);
+
 int	ft_putstr(char *str);
+
 int	ft_putptr(void *ptr);
-int	ft_puthex(int nbr, char format);
-int	putnbr_len(long long ap_num);
+int	ptr_len(unsigned long long address);
+int	ft_putptr_base(unsigned long long address, char *base);
+
+int	nbr_len(long long ap_num);
 int	ft_putnbr(int ap_num);
-int	ft_put_unsigned_nbr(unsigned int nbr);
-int	putnbr_base_len(long long number);
+
+int	unsigned_nbr_len(unsigned int ap_num);
+int	ft_put_unsigned_nbr(unsigned int ap_num);
+
+int	hex_len(long long ap_num);
 int	ft_putnbr_base(long long number, char *base);
+int	ft_puthex(unsigned int ap_num, char format);
 
 #endif

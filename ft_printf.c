@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 20:48:51 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/05/05 20:18:04 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/05/07 22:44:25 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_format(char format, va_list ap)
 	else if (format == 'u')
 		len = ft_put_unsigned_nbr(va_arg(ap, unsigned int));
 	else if (format == 'x' || format == 'X')
-		len = ft_puthex(va_arg(ap, int), format);
+		len = ft_puthex(va_arg(ap, unsigned int), format);
 	else if (format == '%')
 		len = ft_putchar('%');
 	else
@@ -100,13 +100,17 @@ int	ft_printf(const char *format, ...)
 	//ft_printf("f_len : %d\n", ft_printf("%%% \n: %%%\n"));
 //}
 
-int	main(void)
-{
+//int	main(void)
+//{
 //	printf("P_len : %d\n", printf("d : %d\n", a));
 //	ft_printf("f_len : %d\n", ft_printf("d : %d\n", a));
 //	if (printf("d : %d\n", a) == ft_printf("d : %d\n", a))
 //		printf("same result\n");
 //	else
 //		printf("diff\n");
-	printf("%x", -1);
-}
+	//if (printf("%c\n", 255) == ft_printf("%c\n", -128))
+	//printf("%s", "same\n");
+//	int a = 2147483647;
+//	printf("ORI : %d\n", printf("%x\n", a));
+//	printf("FTP : %d\n", ft_printf("%x\n", a));
+//}

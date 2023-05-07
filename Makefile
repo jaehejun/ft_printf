@@ -6,7 +6,7 @@
 #    By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 20:43:43 by jaehejun          #+#    #+#              #
-#    Updated: 2023/05/04 20:43:45 by jaehejun         ###   ########.fr        #
+#    Updated: 2023/05/07 22:09:58 by jaehejun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ CC		= cc
 
 CFLAGS	= -Wall -Wextra -Werror
  
-SRCS	= ft_printf.c ft_print_conv.c ft_putnbr_base.c
-
+SRCS	= ft_printf.c ft_putchar.c ft_putstr.c ft_putptr.c ft_putnbr.c \
+			ft_put_unsigned_nbr.c ft_puthex.c
 OBJS	= $(SRCS:.c=.o)
 
 all: $(NAME)
