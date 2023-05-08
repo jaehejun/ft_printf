@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 20:04:04 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/05/07 22:45:10 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/05/08 15:37:27 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int	ft_putnbr(int ap_num);
 int	unsigned_nbr_len(unsigned int ap_num);
 int	ft_put_unsigned_nbr(unsigned int ap_num);
 
-int	hex_len(long long ap_num);
-int	ft_putnbr_base(long long number, char *base);
+int	hex_len(unsigned int ap_num);
+int	ft_putnbr_base(unsigned int ap_num, char *base);
 int	ft_puthex(unsigned int ap_num, char format);
 
 #endif

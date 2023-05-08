@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 21:17:36 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/05/07 21:17:53 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/05/08 15:19:30 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@ int	ft_putstr(char *str)
 	len = 0;
 	if (str == NULL)
 	{
-		len = write(1, "(null)", 6);
-		if (len == -1)
+		if (write(1, "(null)", 6) == -1)
 			return (-1);
-		return (len);
+		return (6);
 	}
 	while (*str != '\0')
 	{

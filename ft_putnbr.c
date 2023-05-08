@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 21:31:35 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/05/07 23:19:45 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/05/08 18:32:21 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ int	ft_putnbr(int ap_num)
 			return (-1);
 	}
 	if (number >= 10)
-		ft_putnbr(number / 10);
+	{
+		if (ft_putnbr(number / 10) == -1)
+			return (-1);
+	}
 	if (ft_putchar(number % 10 + '0') == -1)
 		return (-1);
 	len = nbr_len(ap_num);

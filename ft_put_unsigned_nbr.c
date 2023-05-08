@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 21:50:37 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/05/07 21:51:00 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/05/08 18:32:40 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ int	ft_put_unsigned_nbr(unsigned int ap_num)
 	int	len;
 
 	if (ap_num >= 10)
-		ft_put_unsigned_nbr(ap_num / 10);
+	{
+		if (ft_put_unsigned_nbr(ap_num / 10) == -1)
+			return (-1);
+	}
 	if (ft_putchar(ap_num % 10 + '0') == -1)
 		return (-1);
 	len = unsigned_nbr_len(ap_num);

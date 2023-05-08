@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 21:18:18 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/05/07 21:57:33 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/05/08 18:33:02 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ int	ptr_len(unsigned long long address)
 int	ft_putptr_base(unsigned long long address, char *base)
 {
 	if (address >= 16)
-		ft_putptr_base(address / 16, base);
+	{
+		if (ft_putptr_base(address / 16, base) == -1)
+			return (-1);
+	}
 	if (write(1, &base[address % 16], 1) == -1)
 		return (-1);
 	return (0);
