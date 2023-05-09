@@ -6,7 +6,7 @@
 /*   By: jaehejun <jaehejun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 20:48:51 by jaehejun          #+#    #+#             */
-/*   Updated: 2023/05/08 20:27:11 by jaehejun         ###   ########.fr       */
+/*   Updated: 2023/05/09 16:37:30 by jaehejun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	check_format(char format, va_list ap)
 	else if (format == '%')
 		len = ft_putchar('%');
 	else
-		len = ft_putchar(format);
+		return (0);
 	return (len);
 }
 
@@ -62,16 +62,4 @@ int	ft_printf(const char *format, ...)
 	}
 	va_end(ap);
 	return (len);
-}
-
-#include <stdio.h>
-
-int	main(void)
-{
-	//int a = 1234;
-	//printf("OG : %%%%%%%%%%\n", printf("%d\n", a));
-	//printf("FT : %%%%%%%%%%\n", ft_printf("%d\n", a));
-
-	printf("%%%%%%%\n");
-	ft_printf("%%%%%%%\n");
 }
